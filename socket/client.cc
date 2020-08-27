@@ -12,7 +12,7 @@ using namespace std;
 
 int main() {
     // ソケット生成
-    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    int sockfd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
     if(sockfd < 0) {
         cout << "socket error: " << strerror(errno) << endl;
         exit(1);
