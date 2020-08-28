@@ -54,14 +54,16 @@ int main() {
     }
     cout << "connected from " << inet_ntoa(get_addr.sin_addr) << endl;
 
-    // データ受信
-    char r_buf[256];
-    recv(connect, r_buf, 256, 0);
-    cout << inet_ntoa(get_addr.sin_addr) << ": " << r_buf << endl;
+    while(true) {
+        // データ受信
+        char r_buf[256];
+        recv(connect, r_buf, 256, 0);
+        cout << inet_ntoa(get_addr.sin_addr) << ": " << r_buf << endl;
 
-    // データ送信
-    send(connect, r_buf, 256, 0);
-    cout << hostname << ": " << r_buf << endl;
+        // データ送信
+        send(connect, r_buf, 256, 0);
+        cout << hostname << ": " << r_buf << endl;
+    }
 
     // ソケットクローズ
     close(connect);

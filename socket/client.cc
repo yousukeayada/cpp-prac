@@ -11,6 +11,9 @@ using namespace std;
 #define PORT 14235
 
 int main() {
+    char hostname[256];
+    gethostname(hostname, sizeof(hostname));
+
     // ソケット生成
     int sockfd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
     if(sockfd < 0) {
@@ -30,16 +33,21 @@ int main() {
     connect(sockfd, (struct sockaddr *)&addr, sizeof(struct sockaddr_in));
     cout << "connected to " << HOST << endl;
 
-    // データ送信
-    char s_buf[256];
-    cout << "input: "; cin >> s_buf;
-    send(sockfd, s_buf, 256, 0);
-    cout << "sent: " << s_buf << endl;
+    while(true) {
+        // データ送信
+        char s_buf[256];
+        cout << "input: "; cin >> s_buf;
+        if(strcmp(s_buf, "quit") == 0) {
+            break;
+        }
+        send(sockfd, s_buf, 256, 0);
+        cout << hostname << ": " << s_buf << endl;
 
-    // データ受信
-    char r_buf[256];
-    recv(sockfd, r_buf, 256, 0);
-    cout << "received: " << r_buf << endl;
+        // データ受信
+        char r_buf[256];
+        recv(sockfd, r_buf, 256, 0);
+        cout << HOST << ": " << r_buf << endl;
+    }
 
     // ソケットクローズ
     close(sockfd);

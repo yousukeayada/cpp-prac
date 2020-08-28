@@ -13,3 +13,5 @@
     　char sin_zero[8];
     }
     ```
+- TCP：send, recv
+- UDP：sendto, recvfrom
