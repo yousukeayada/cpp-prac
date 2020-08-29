@@ -2,8 +2,9 @@
 
 - https://www.khstasaba.com/?p=401
   - int socket(int protocolFamily, int type, int protocol)
-    - PF_INET＋SOCK_STREAM＋IPPROTO_TCP・・TCP/IPv4
-    - PF_INET＋SOCK_DGRAM＋IPPROTO_UDP・・UDP/IPv4
+    - PF_INET + SOCK_STREAM + IPPROTO_TCP・・TCP/IPv4
+    - PF_INET + SOCK_DGRAM + IPPROTO_UDP・・UDP/IPv4
+    - AF_UNIX + SOCK_STREAM/SOCK_DGRAM・・UNIX ドメインソケット
   - ```bash
     struct sockaddr_in
     {
@@ -15,3 +16,4 @@
     ```
 - TCP：send, recv
 - UDP：sendto, recvfrom
+- UNIX ドメインソケット：write, read
