@@ -10,6 +10,8 @@ using namespace std;
 #define HOST "127.0.0.1"
 #define PORT 14235
 
+#define BUFSIZE 65535
+
 int main() {
     char hostname[256];
     gethostname(hostname, sizeof(hostname));
@@ -56,12 +58,12 @@ int main() {
 
     while(true) {
         // データ受信
-        char r_buf[256];
-        recv(connect, r_buf, 256, 0);
+        char r_buf[BUFSIZE];
+        recv(connect, r_buf, BUFSIZE, 0);
         cout << inet_ntoa(get_addr.sin_addr) << ": " << r_buf << endl;
 
         // データ送信
-        send(connect, r_buf, 256, 0);
+        send(connect, r_buf, BUFSIZE, 0);
         cout << hostname << ": " << r_buf << endl;
     }
 

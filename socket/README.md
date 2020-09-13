@@ -1,4 +1,4 @@
-- ソケットプログラム
+## Socket API を使ったプログラム
 
 - https://www.khstasaba.com/?p=401
   - int socket(int protocolFamily, int type, int protocol)
@@ -17,3 +17,14 @@
 - TCP：send, recv
 - UDP：sendto, recvfrom
 - UNIX ドメインソケット：write, read
+
+- http://www.tohoho-web.com/ex/http.htm
+  - HTTP メッセージの中身
+- https://www.geekpage.jp/programming/linux-network/http-client.php
+  - `gethostbyname()` で名前解決する
+  - `GET / HTTP/1.0\r\n\r\n`
+    - 1.1 だとなぜかダメ
+    - \r\n も2個ないとダメ
+- https://www.geekpage.jp/programming/linux-network/gethostbyname.php
+  - `gethostbyname()` の使い方
+  
